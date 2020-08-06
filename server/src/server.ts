@@ -1,18 +1,11 @@
 import express, { response } from 'express';
+import routes from './routes';
+import cors from 'cors';
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
-
-app.delete('/users/:id', (req, res) => {
-  console.log(req.params);
-
-  const users = [
-    { name: 'Rodolfo', age: 35},
-    { name: 'NatyPistol', age: 44}
-  ]
-
-  return res.json(users);
-});
+app.use(routes);
 
 app.listen(3333);
